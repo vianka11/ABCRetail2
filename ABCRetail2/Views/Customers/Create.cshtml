@@ -1,0 +1,26 @@
+﻿@model CustomerEntity
+@{
+    ViewData["Title"] = "Create Customer";
+}
+<h2>Create Customer</h2>
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" required />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" type="email" required />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Phone" class="form-label"></label>
+        <input asp-for="Phone" class="form-control" />
+    </div>
+    <button class="btn btn-success" type="submit">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

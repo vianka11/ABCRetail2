@@ -1,0 +1,26 @@
+﻿@model ContractEntity
+
+@{
+    ViewData["Title"] = "Edit Contract";
+}
+
+<h2>Edit Contract</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" asp-for="PartitionKey" />
+    <input type="hidden" asp-for="RowKey" />
+
+    <div class="form-group">
+        <label>Current File:</label>
+        <p>@Model.FileName</p>
+        <a href="@Model.FileUrl" target="_blank">View Contract</a>
+    </div>
+
+    <div class="form-group">
+        <label for="file">Replace File (optional)</label>
+        <input type="file" name="file" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button> |
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>

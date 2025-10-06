@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Contracts Upload";
+}
+<h2>Contracts</h2>
+@if (TempData["Msg"] != null)
+{
+    <div class="alert alert-info">@TempData["Msg"]</div>
+}
+<form asp-action="Upload" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label class="form-label">Select file (PDF/Doc/Image)</label>
+        <input type="file" name="file" class="form-control" />
+    </div>
+    <button class="btn btn-primary" type="submit">Upload to Azure Files</button>
+</form>

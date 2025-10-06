@@ -1,0 +1,24 @@
+﻿@model IEnumerable<CustomerEntity>
+@{
+    ViewData["Title"] = "Customers";
+}
+<h2>Customers</h2>
+<p><a class="btn btn-primary" asp-action="Create">Add Customer</a></p>
+<table class="table table-striped">
+    <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.FirstName @c.LastName</td>
+                <td>@c.Email</td>
+                <td>@c.Phone</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@c.RowKey">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@c.RowKey">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@c.RowKey">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
