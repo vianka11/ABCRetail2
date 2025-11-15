@@ -1,0 +1,42 @@
+﻿@model ABCRetail2.Models.CartModel
+
+@{
+    ViewData["Title"] = "Your Cart";
+}
+
+<h2>Your Cart</h2>
+
+@if (Model.Items == null || !Model.Items.Any())
+{
+    <div class="alert alert-info">Your cart is currently empty.</div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Price* item.Quantity).ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-end">
+        <form asp-action="Checkout" method="post">
+            <button type="submit" class="btn btn-success">Place Order</button>
+        </form>
+    </div>
+}
